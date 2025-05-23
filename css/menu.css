@@ -1,0 +1,205 @@
+/* Menu Container */
+.menu {
+    background-color: var(--bg-elevated);
+    border-radius: var(--radius-md);
+    padding: 16px 8px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* Menu Scrollbar */
+.menu::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent;
+}
+
+.menu::-webkit-scrollbar-thumb {
+    background-color: var(--bg-highlight);
+    border-radius: var(--radius-full);
+}
+
+.menu::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text-muted);
+}
+
+/* Menu List */
+.menu > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Menu Items */
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    height: 32px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.menu-item.active,
+.menu-item:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-highlight);
+}
+
+.menu-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.menu-item:hover .menu-icon,
+.menu-item.active .menu-icon {
+    opacity: 1;
+}
+
+/* Menu Sections */
+.menu-section {
+    margin: 16px 0;
+    padding: 0 8px;
+}
+
+.menu-section-title {
+    color: var(--text-muted);
+    font-size: 0.65rem;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    padding-left: 12px;
+}
+
+/* Create Playlist Button */
+.create-playlist, .liked-songs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    height: 32px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.create-playlist .menu-icon {
+    background-color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    padding: 2px;
+}
+
+.liked-songs {
+    background: linear-gradient(135deg, #450af5, #c4efd9);
+    color: var(--text-primary);
+    font-weight: var(--font-weight-bold);
+}
+
+.liked-songs .menu-icon {
+    filter: brightness(0) invert(1);
+}
+
+/* Playlist List */
+.playlist-list {
+    margin-top: 12px;
+    padding: 0 8px;
+    list-style: none;
+}
+
+.playlist-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px;
+    color: var(--text-secondary);
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: var(--radius-sm);
+    height: 32px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlist-item:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-highlight);
+}
+
+.playlist-cover {
+    width: 22px;
+    height: 22px;
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.playlist-item span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 140px;
+    display: inline-block;
+}
+
+/* Divider */
+.menu-divider {
+    height: 1px;
+    background-color: var(--bg-highlight);
+    margin: 8px 12px;
+}
+
+/* Help Section Items */
+.menu-section .menu-item {
+    height: 32px;
+    font-size: var(--font-size-xs);
+}
+
+.menu-section .menu-item img {
+    width: 16px;
+    height: 16px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .menu {
+        padding: 12px 6px;
+    }
+
+    .menu-item, .create-playlist, .liked-songs, .playlist-item {
+        padding: 6px 10px;
+        height: 28px;
+        font-size: 0.7rem;
+    }
+
+    .menu-icon, .playlist-cover {
+        width: 14px;
+        height: 14px;
+    }
+
+    .playlist-item span {
+        max-width: 80px;
+    }
+
+    .menu-section {
+        padding: 0 6px;
+    }
+} 
