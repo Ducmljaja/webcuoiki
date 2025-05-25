@@ -20,12 +20,11 @@
     <header class="container-fluid  flex fixed">
         <div class="head1 flex">
             <button class="menubutton icon" id="menubutton">
-                <img src="img/menubutton.jpg" alt="menu" />
+                <img src="https://img.icons8.com/ios-filled/50/FFFFFF/menu--v1.png" alt="menu" />
             </button>
             <div class="logo">
                 <a href="index.html"><img class="logo" src="img/logo.png" alt="logo"></a>
             </div>
-
         </div>
         <div class="head2 ">
             <div class="head21 flex mt-4">
@@ -197,6 +196,42 @@
                     </div>
 
                 </section>
+                <div class="banner-5card-container">
+                    <div class="banner-5card-large">
+                        <img src="img/slide1.jpg" alt="Giáng Sinh Rộn Ràng">
+                        <div class="banner-5card-large-content">
+                            <h2>Giáng Sinh Rộn Ràng</h2>
+                        </div>
+                    </div>
+                    <div class="banner-5card-right">
+                        <div class="banner-5card-small-grid">
+                            <div class="banner-5card-small">
+                                <img src="img/slide2.jpg" alt="Bài Hát Viral Nổi Bật">
+                                <div class="banner-5card-small-content">
+                                    <h4>Bài Hát Viral Nổi Bật</h4>
+                                </div>
+                            </div>
+                            <div class="banner-5card-small">
+                                <img src="img/slide3.jpg" alt="Nhạc Giáng Sinh Gây Nghiện">
+                                <div class="banner-5card-small-content">
+                                    <h4>Nhạc Giáng Sinh Gây Nghiện</h4>
+                                </div>
+                            </div>
+                            <div class="banner-5card-small">
+                                <img src="img/slide4.jpg" alt="Nhạc Mới Mỗi Tuần">
+                                <div class="banner-5card-small-content">
+                                    <h4>Nhạc Mới Mỗi Tuần</h4>
+                                </div>
+                            </div>
+                            <div class="banner-5card-small">
+                                <img src="img/slide5.jpg" alt="Nghệ Sĩ Nổi Bật">
+                                <div class="banner-5card-small-content">
+                                    <h4>Nghệ Sĩ Nổi Bật</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="nameplaylist "><a href="" class="nav-link text-dark">
                         <h2>Nhạc Việt Thịnh Hành</h2>
                     </a></div>
@@ -599,6 +634,81 @@
 
     <footer>
     </footer>
+    <script>
+        const carouselItems = [
+            {
+                img: 'img/slide1.jpg',
+                title: 'Giáng Sinh Rộn Ràng'
+            },
+            {
+                img: 'img/slide2.jpg',
+                title: 'Bài Hát Viral Nổi Bật'
+            },
+            {
+                img: 'img/slide3.jpg',
+                title: 'Nhạc Giáng Sinh Gây Nghiện'
+            },
+            {
+                img: 'img/slide4.jpg',
+                title: 'Nhạc Mới Mỗi Tuần'
+            },
+            {
+                img: 'img/slide5.jpg',
+                title: 'Nghệ Sĩ Nổi Bật'
+            }
+        ];
+
+        let carouselIndex = 0;
+
+        function renderFullCarousel() {
+            // Hình lớn bên trái
+            const large = document.querySelector('.banner-5card-large img');
+            const largeTitle = document.querySelector('.banner-5card-large-content h2');
+            if (large && largeTitle) {
+                large.src = carouselItems[carouselIndex].img;
+                large.alt = carouselItems[carouselIndex].title;
+                largeTitle.textContent = carouselItems[carouselIndex].title;
+            }
+            // 4 hình nhỏ bên phải
+            const grid = document.querySelector('.banner-5card-small-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            for (let i = 1; i <= 4; i++) {
+                const item = carouselItems[(carouselIndex + i) % carouselItems.length];
+                const div = document.createElement('div');
+                div.className = 'banner-5card-small';
+                div.innerHTML = `
+                <img src="${item.img}" alt="${item.title}">
+                <div class="banner-5card-small-content">
+                    <h4>${item.title}</h4>
+                </div>
+            `;
+                grid.appendChild(div);
+            }
+        }
+
+        function nextFullCarousel() {
+            carouselIndex = (carouselIndex + 1) % carouselItems.length;
+            renderFullCarousel();
+        }
+
+        // Hiển thị lần đầu
+        renderFullCarousel();
+        // Tự động chuyển carousel mỗi 3 giây
+        setInterval(nextFullCarousel, 3000);
+    </script>
+    <script>
+        document.querySelectorAll('.song').forEach(function (song) {
+            song.onclick = function () {
+                var audio = document.getElementById('audio');
+                var src = song.getAttribute('data-src');
+                if (src) {
+                    audio.src = src;
+                    audio.play();
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
