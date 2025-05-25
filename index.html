@@ -1,714 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BTL Web nghe nhạc</title>
-    <link href="c++.png" rel="shortcut icon" />
-    <link rel="stylesheet" href="css/btl.css">
-    <link rel="stylesheet" href="css/phan1.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <script src="js/jquery-3.7.1.min.js"></script>
-    <script src="js/btl.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/11.8.1/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/11.8.1/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/11.8.1/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/11.8.1/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/11.8.1/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/11.8.1/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/11.8.1/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/11.8.1/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/11.8.1/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/11.8.1/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message">
+      <h2>Welcome</h2>
+      <h1>Firebase Hosting Setup Complete</h1>
+      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+    </div>
+    <p id="load">Firebase SDK Loading&hellip;</p>
 
-<body class="bg-secondary">
-    <header class="container-fluid  flex fixed">
-        <div class="head1 flex">
-            <button class="menubutton icon" id="menubutton">
-                <img src="https://img.icons8.com/ios-filled/50/FFFFFF/menu--v1.png" alt="menu" />
-            </button>
-            <div class="logo">
-                <a href="index.html"><img class="logo" src="img/logo.png" alt="logo"></a>
-            </div>
-        </div>
-        <div class="head2 ">
-            <div class="head21 flex mt-4">
-                <ul class="searchs flex ">
-                    <li class="search flex">
-                        <input id="searchtext" type="text" placeholder="Tìm Kiếm bài hát, nghệ sĩ">
-                        <button class="fa-solid fa-magnifying-glass" id="searchbt"></button>
-                    </li>
-                    <li class="mic">
-                        <button class="icon">
-                            <img src="https://img.icons8.com/fluency-systems-filled/48/FFFFFF/microphone.png"
-                                alt="microphone" />
-                            <div class="test">
-                                <div class="note">microphone</div>
-                            </div>
-                        </button>
-
-                    </li>
-                </ul>
-                <ul class="icons flex">
-                    <button class="setting icon">
-                        <img src="https://img.icons8.com/ios/50/FFFFFF/settings--v1.png" alt="settings" />
-                        <div class="test">
-                            <div class="note">setting</div>
-                        </div>
-                    </button>
-                    <button class="notifi icon">
-                        <img src="https://img.icons8.com/external-tanah-basah-basic-outline-tanah-basah/24/FFFFFF/external-bell-date-and-time-tanah-basah-basic-outline-tanah-basah-2.png"
-                            alt="notification" />
-                        <div class="test">
-                            <div class="note">notification</div>
-                        </div>
-                    </button>
-                    <button class="user icon">
-                        <a href="user.html"><img width="30px" height="30px"
-                                src="https://img.icons8.com/parakeet-line/48/FFFFFF/user.png" alt="user" /></a>
-                        <div class="test">
-                            <div class="note">user</div>
-                        </div>
-                    </button>
-                </ul>
-            </div>
-
-    </header>
-    <main>
-
-        <section id="left" class="left fixed">
-            <nav class="menu">
-                <ul>
-                    <a href="phan2.html">
-                        <div class="library">
-                            <img src="https://img.icons8.com/ios/50/FFFFFF/music-library--v1.png" alt="music-library" />
-                            <h6>Danh sách phát</h6>
-                        </div>
-                    </a>
-                    <a href="phan4.html">
-                        <div class="library">
-                            <img src="https://img.icons8.com/windows/32/FFFFFF/music-transcript.png"
-                                alt="music-transcript" />
-                            <h6>Thể loại</h6>
-                        </div>
-                    </a>
-                    <a href="phan3.html">
-                        <div class="library">
-                            <img src="https://img.icons8.com/ios-filled/50/FFFFFF/sheet-music.png" alt="sheet-music" />
-                            <h6>Bảng xếp hạng</h6>
-                        </div>
-                    </a>
-                    <div>
-                        <img src="https://img.icons8.com/ios/50/FFFFFF/facebook-like--v1.png" alt="like" />
-                        <h6>Bài hát đã thích</h6>
-                    </div>
-                    <div>
-                        <img src="https://img.icons8.com/material/24/FFFFFF/filled-flag--v1.png" alt="filled-flag" />
-                        <h6>Báo cáo</h6>
-                    </div>
-                    <div>
-                        <img src="https://img.icons8.com/ios/50/FFFFFF/help--v1.png" alt="help" />
-                        <h6>Trợ giúp</h6>
-                    </div>
-                    <div>
-                        <img src="https://img.icons8.com/external-tanah-basah-basic-outline-tanah-basah/24/FFFFFF/external-attention-file-tanah-basah-basic-outline-tanah-basah.png"
-                            alt="exclamationmmark" />
-                        <h6>Ý kiến phản hồi</h6>
-                    </div>
-                </ul>
-            </nav>
-            <div class="play-left bg-light border">
-                <div class="addpls">
-                    <div class="flex">
-                        <img src="https://img.icons8.com/ios-glyphs/50/FFFFFF/playlist--v1.png" alt="playlist--v1" />
-                        <h6>Thêm vào danh sách phát</h6>
-                    </div>
-                </div>
-                <div class="imgsong">
-                    <img id="imgsong" src="" alt="">
-                </div>
-                <div class="cd_infosong flex">
-                    <div class="cdlogo">
-                        <img id="cd" src="img/logo.png" alt="">
-                    </div>
-                    <div class="flex" style="width:60%">
-                        <div class="infosong">
-                            <h4></h4>
-                            <p></p>
-                        </div>
-                    </div>
-                    <div></div>
-                </div>
-
-
-        </section>
-        </div>
-        <div class="col-8-md">
-            <section class="music right" id="right">
-                <section class="search-show" id="search-show">
-                    <div class="wrap_no_search">
-                        <div class="no-search close flex">
-                            <button class="delete icon"><img
-                                    src="https://img.icons8.com/ios-filled/50/FFFFFF/delete-sign--v1.png"
-                                    alt="delete-sign--v1" /></button>
-                            <div>
-                                <div class="flex">
-                                    <div></div>
-                                    <img src="https://img.icons8.com/hatch/64/FFFFFF/no-music.png" alt="no-music" />
-                                    <div></div>
-                                </div>
-                                <h3>Không có kết quả được tìm thấy</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="search-namesong close">
-                        <button class="delete icon"><img
-                                src="https://img.icons8.com/ios-filled/50/FFFFFF/delete-sign--v1.png"
-                                alt="delete-sign--v1" /></button>
-                        <div class="nameplaylist"><a href="" class="nav-link text-dark">
-                                <h2>Bài Hát Liên Quan</h2>
-                            </a></div>
-                        <div class="flex">
-                            <button class="scrollleft"><img
-                                    src="https://img.icons8.com/ios/50/FFFFFF/double-down--v1.png"
-                                    alt="scrollleft" /></button>
-                            <div class="songs">
-
-                            </div>
-                            <button class="scrollright"><img
-                                    src="https://img.icons8.com/ios/50/FFFFFF/double-down--v1.png"
-                                    alt="scrollright" /></button>
-                        </div>
-                    </div>
-                    <div class="search-singer close">
-                        <button class="delete icon"><img
-                                src="https://img.icons8.com/ios-filled/50/FFFFFF/delete-sign--v1.png"
-                                alt="delete-sign--v1" /></button>
-                        <div class="nameplaylist"><a href="" class="nav-link text-dark">
-                                <h2>Ca Sĩ Liên Quan</h2>
-                            </a></div>
-                        <div class="flex">
-                            <button class="scrollleft"><img
-                                    src="https://img.icons8.com/ios/50/FFFFFF/double-down--v1.png"
-                                    alt="scrollleft" /></button>
-                            <div class="singer songs">
-
-                            </div>
-                            <button class="scrollright"><img
-                                    src="https://img.icons8.com/ios/50/FFFFFF/double-down--v1.png"
-                                    alt="scrollright" /></button>
-                        </div>
-                    </div>
-
-                </section>
-                <div class="banner-5card-container">
-                    <div class="banner-5card-large">
-                        <img src="img/slide1.jpg" alt="Giáng Sinh Rộn Ràng">
-                        <div class="banner-5card-large-content">
-                            <h2>Giáng Sinh Rộn Ràng</h2>
-                        </div>
-                    </div>
-                    <div class="banner-5card-right">
-                        <div class="banner-5card-small-grid">
-                            <div class="banner-5card-small">
-                                <img src="img/slide2.jpg" alt="Bài Hát Viral Nổi Bật">
-                                <div class="banner-5card-small-content">
-                                    <h4>Bài Hát Viral Nổi Bật</h4>
-                                </div>
-                            </div>
-                            <div class="banner-5card-small">
-                                <img src="img/slide3.jpg" alt="Nhạc Giáng Sinh Gây Nghiện">
-                                <div class="banner-5card-small-content">
-                                    <h4>Nhạc Giáng Sinh Gây Nghiện</h4>
-                                </div>
-                            </div>
-                            <div class="banner-5card-small">
-                                <img src="img/slide4.jpg" alt="Nhạc Mới Mỗi Tuần">
-                                <div class="banner-5card-small-content">
-                                    <h4>Nhạc Mới Mỗi Tuần</h4>
-                                </div>
-                            </div>
-                            <div class="banner-5card-small">
-                                <img src="img/slide5.jpg" alt="Nghệ Sĩ Nổi Bật">
-                                <div class="banner-5card-small-content">
-                                    <h4>Nghệ Sĩ Nổi Bật</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="nameplaylist "><a href="" class="nav-link text-dark">
-                        <h2>Nhạc Việt Thịnh Hành</h2>
-                    </a></div>
-                <section class="hotmusic flex">
-                    <button class="scrollleft"><img src="https://img.icons8.com/ios/50/FFFFFF/double-down--v1.png"
-                            alt="scrollleft" /></button>
-                    <div class="songs flex">
-                        <div class="song">
-                            <div class="img-song"><img src="img/kisungotngao.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Ký Sự Ngọt Ngào</h4>
-                                <p>Kha</p>
-                                <!-- <button class="menu-song"><img src="https://img.icons8.com/ios-glyphs/50/FFFFFF/menu-2.png" alt="menu-2"/></button> -->
-                            </div>
-                            <!--  -->
-                            <!-- <div class="addpls">
-                            <div class="flex">
-                                <img src="https://img.icons8.com/ios-glyphs/50/FFFFFF/playlist--v1.png" alt="playlist--v1"/>
-                                <h6>Thêm vào danh sách phát</h6>
-                            </div>
-                        </div> -->
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/flex.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Flexin trên Circle-K</h4>
-                                <p>Low G</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/vo tình.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Vô Tình</h4>
-                                <p>HOAPROX x XESI</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/soda.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>SODA</h4>
-                                <p>MCK</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/taivisao.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>TẠI VÌ SAO</h4>
-                                <p>MCK</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/vaicaunoicokhiennguoithaydo.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>vaicaunoicokhiennguoithaydoi</h4>
-                                <p>GREY D x tlinh</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/khongten.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Không Tên</h4>
-                                <p>MCK</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/tinhcatinhta.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>tình ca tình ta</h4>
-                                <p>kis</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/berlin.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>BERLIN</h4>
-                                <p>Khoi Vu</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/thoiemdungdi.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Thôi Em Đừng Đi</h4>
-                                <p>RPT MCK ( ft. Trung Trần )</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="scrollright"><img src="https://img.icons8.com/ios/50/FFFFFF/double-down--v1.png"
-                            alt="scrollright" /></button>
-                </section>
-                <div class="nameplaylist"><a href="" class="nav-link text-dark">
-                        <h2>Hip-Hop Việt</h2>
-                    </a></div>
-                <section class="hotmusic flex">
-                    <button class="scrollleft"><img src="https://img.icons8.com/ios/50/FFFFFF/double-down--v1.png"
-                            alt="scrollleft" /></button>
-                    <div class="songs flex">
-                        <div class="song">
-                            <div class="img-song"><img src="img/anthan.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>An Thần</h4>
-                                <p>Low G,Thắng</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/batnhaclen.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Bật Nhạc Lên</h4>
-                                <p>HIEUTHUHAI</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/Buongdoitaynhaura.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Buông Đôi Tay Nhau Ra</h4>
-                                <p>Sơn Tùng M-TP</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/waitingforyou.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Waiting For You</h4>
-                                <p>MONO</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/yeu5.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>YÊU 5</h4>
-                                <p>Rhymastic</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/tinhyeumaunang.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Tình Yêu Màu Nắng</h4>
-                                <p>Đoàn Thúy Trang</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/loinho.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Lối Nhỏ</h4>
-                                <p>Đen Vâu</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/mongyu.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>MỘNG YU</h4>
-                                <p>AMEE x MCK</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/chungtakhongthuocvenhau.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Chúng Ta Không Thuộc Về Nhau</h4>
-                                <p>Sơn Tùng M-TP</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/nghenhutinhyeu.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Nghe Như Tình Yêu</h4>
-                                <p>HIEUTHUHAI</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="scrollright"><img src="https://img.icons8.com/ios/50/FFFFFF/double-down--v1.png"
-                            alt="scrollright" /></button>
-                </section>
-                <div class="nameplaylist"><a href="" class="nav-link text-dark">
-                        <h2>Ballad</h2>
-                    </a></div>
-                <section class="hotmusic flex">
-                    <button class="scrollleft"><img src="https://img.icons8.com/ios/50/FFFFFF/double-down--v1.png"
-                            alt="scrollleft" /></button>
-                    <div class="songs flex">
-                        <div class="song">
-                            <div class="img-song"><img src="img/cuocsongemonkhong.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>CUỘC SỐNG EM ỔN KHÔNG</h4>
-                                <p>ANH TÚ</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/vansutuyduyen.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Vạn Sự Tùy Duyên</h4>
-                                <p>Thanh Hưng</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/tulaunuocmatg.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Tự Lau Nước Mắt</h4>
-                                <p>Mr Siro</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/Bông hoa chẳng thuộc về ta.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>BÔNG HOA CHẲNG THUỘC VỀ TA</h4>
-                                <p>Việt</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/tinhdangnhulycaphe.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Tình Đắng Như Ly Cà Phê</h4>
-                                <p>MCK</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/thanhxuan.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Thanh Xuân</h4>
-                                <p>Da LAB</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/hoanokhongmau.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Hoa Nở Không Màu</h4>
-                                <p>Hoài Lâm</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/buonkhongem.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Buồn Không Em</h4>
-                                <p>Đạt G</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/emdungdi.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Em Đừng Đi</h4>
-                                <p>Sơn Tùng M-TP</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/tinh_dau.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Tình Đầu</h4>
-                                <p>Tăng Duy Tân</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="scrollright"><img src="https://img.icons8.com/ios/50/FFFFFF/double-down--v1.png"
-                            alt="scrollright" /></button>
-                </section>
-                <div class="nameplaylist"><a href="" class="nav-link text-dark">
-                        <h2>Những Giọng Hát Huyền Thoại</h2>
-                    </a></div>
-                <section class="hotmusic testtt flex">
-                    <button class="scrollleft"><img src="https://img.icons8.com/ios/50/FFFFFF/double-down--v1.png"
-                            alt="scrollleft" /></button>
-                    <div class="songs flex">
-                        <div class="song">
-                            <div class="img-song"><img src="img/emkhongkhoc.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Em Không Khóc</h4>
-                                <p>buitruonglinh ft vuphungtien</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/buoncuaanh.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Buồn Của Anh</h4>
-                                <p>K-ICM x Đạt G x Masew</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/buonthicukhocdi.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Buồn Thì Cứ Khóc Đi</h4>
-                                <p>Lynk Lee</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/emla.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Em Là</h4>
-                                <p>MONO</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/hetthuongcannho.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>HẾT THƯƠNG CẠN NHỚ</h4>
-                                <p>ĐỨC PHÚC</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/tuyam.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Túy Âm</h4>
-                                <p>Xesi x Masew x Nhatnguyen</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/phiasaumotcogai.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>PHÍA SAU MỘT CÔ GÁI</h4>
-                                <p>Soobin Hoàng Sơn</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/một bước yêu vạn dặm đau.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Một Bước Yêu, Vạn Dặm Đau</h4>
-                                <p>Mr. Siro</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/khuomatdangthuong.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>Khuôn mặt đáng thương</h4>
-                                <p>Sơn Tùng MTP</p>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <div class="img-song"><img src="img/songgio.jpg" alt="gg"></div>
-                            <div class="infosong">
-                                <h4>SÓNG GIÓ</h4>
-                                <p>ICM x JACK</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="scrollright"><img src="https://img.icons8.com/ios/50/FFFFFF/double-down--v1.png"
-                            alt="scrollright" /></button>
-                </section>
-
-
-            </section>
-        </div>
-        </div>
-
-
-        <div class="playing flex" id="playing">
-            <audio id="audio" src="" type="audio/mp3">
-            </audio>
-            <div class="likebt">
-                <img class="like" id="like" src="https://img.icons8.com/ios-filled/50/FA5252/like--v1.png"
-                    alt="like--v1" />
-                <h6 class="text-light">Yêu Thích</h6>
-            </div>
-            <div class="play-mid flex">
-                <div class="listening">
-                    <div class="flex listenbts">
-                        <div></div>
-                        <div></div>
-                        <button id="shufflebt"><img class="shuffle listenbt" id="shuffle"
-                                src="https://img.icons8.com/?size=100&id=GsnQu489OK16&format=png&color=FFFFFF"
-                                alt="shuffle" /></button>
-                        <button id="prebt"><img class="pre listenbt" id="pre"
-                                src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/48/FFFFFF/external-next-multimedia-tanah-basah-glyph-tanah-basah.png"
-                                alt="pre" /></button>
-                        <button id="play-pausebt"><img class="play listenbt" id="play-pause"
-                                src="https://img.icons8.com/ios-filled/50/FFFFFF/pause--v1.png" alt="play" /></button>
-                        <button id="nextbt"><img class="next listenbt" id="next"
-                                src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/48/FFFFFF/external-next-multimedia-tanah-basah-glyph-tanah-basah.png"
-                                alt="next" /></button>
-                        <button id="repeatbt"><img class="repeat listenbt" id="repeat"
-                                src="https://img.icons8.com/?size=100&id=91481&format=png&color=FFFFFF"
-                                alt="repeat" /></button>
-                        <div></div>
-                        <div></div>
-                    </div>
-                    <div class="timelisten flex">
-                        <p id="timelistened" class="text-light">00:00</p>
-                        <div class="listens">
-                            <div class="listen">
-                                <div class="listened" id="listened">
-                                    <div></div>
-                                </div>
-                            </div>
-                        </div>
-                        <p id="time" class="text-light">00:00</p>
-                    </div>
-                </div>
-            </div>
-            <div class="play-right flex">
-                <!-- <button class="increasevol"><img src="https://img.icons8.com/ios-filled/50/FFFFFF/plus-math.png" alt="plus-math"/></button> -->
-                <button class="mute volumebt"><img
-                        src="https://img.icons8.com/ios-filled/50/FFFFFF/medium-volume--v1.png"
-                        alt="mute--v1" /></button>
-                <div class="volmaxs">
-                    <div class="volmax">
-                        <div class="vol">
-                            <div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- <button class="decreasevol"><img src="https://img.icons8.com/material-outlined/24/FFFFFF/minus.png" alt="minus"/></button> -->
-        </div>
-        </div>
-    </main>
-
-    <footer>
-    </footer>
     <script>
-        const carouselItems = [
-            {
-                img: 'img/slide1.jpg',
-                title: 'Giáng Sinh Rộn Ràng'
-            },
-            {
-                img: 'img/slide2.jpg',
-                title: 'Bài Hát Viral Nổi Bật'
-            },
-            {
-                img: 'img/slide3.jpg',
-                title: 'Nhạc Giáng Sinh Gây Nghiện'
-            },
-            {
-                img: 'img/slide4.jpg',
-                title: 'Nhạc Mới Mỗi Tuần'
-            },
-            {
-                img: 'img/slide5.jpg',
-                title: 'Nghệ Sĩ Nổi Bật'
-            }
-        ];
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
-        let carouselIndex = 0;
-
-        function renderFullCarousel() {
-            // Hình lớn bên trái
-            const large = document.querySelector('.banner-5card-large img');
-            const largeTitle = document.querySelector('.banner-5card-large-content h2');
-            if (large && largeTitle) {
-                large.src = carouselItems[carouselIndex].img;
-                large.alt = carouselItems[carouselIndex].title;
-                largeTitle.textContent = carouselItems[carouselIndex].title;
-            }
-            // 4 hình nhỏ bên phải
-            const grid = document.querySelector('.banner-5card-small-grid');
-            if (!grid) return;
-            grid.innerHTML = '';
-            for (let i = 1; i <= 4; i++) {
-                const item = carouselItems[(carouselIndex + i) % carouselItems.length];
-                const div = document.createElement('div');
-                div.className = 'banner-5card-small';
-                div.innerHTML = `
-                <img src="${item.img}" alt="${item.title}">
-                <div class="banner-5card-small-content">
-                    <h4>${item.title}</h4>
-                </div>
-            `;
-                grid.appendChild(div);
-            }
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth', 
+            'database', 
+            'firestore',
+            'functions',
+            'messaging', 
+            'storage', 
+            'analytics', 
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
         }
-
-        function nextFullCarousel() {
-            carouselIndex = (carouselIndex + 1) % carouselItems.length;
-            renderFullCarousel();
-        }
-
-        // Hiển thị lần đầu
-        renderFullCarousel();
-        // Tự động chuyển carousel mỗi 3 giây
-        setInterval(nextFullCarousel, 3000);
+      });
     </script>
-    <script>
-        document.querySelectorAll('.song').forEach(function (song) {
-            song.onclick = function () {
-                var audio = document.getElementById('audio');
-                var src = song.getAttribute('data-src');
-                if (src) {
-                    audio.src = src;
-                    audio.play();
-                }
-            }
-        });
-    </script>
-</body>
-
+  </body>
 </html>
